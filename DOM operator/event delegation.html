@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件委托处理</title>
+</head>
+<body>
+  <ul id="list"></ul>
+  <script>
+    {
+      const list = document.getElementById('list');
+      for (let i = 0; i < 3; i++) {
+        const li = document.createElement('li');
+        li.innerText = i + 1;
+        list.appendChild(li);
+      }
+
+      // 事件委托
+      list.addEventListener('click', function (e) {
+        const target = e.target;
+        console.log(target);  // <li>1</li>
+        if (target.tagName === 'LI') {
+          alert(target.innerHTML);
+        }
+      })
+    }
+  </script>  
+</body>
+</html>
