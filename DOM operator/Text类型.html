@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM操作--Text类型</title>
+</head>
+<body>
+  <script>
+    let div = document.createElement('div');
+    div.className = 'myDiv';
+
+    let textNode = document.createTextNode('hello world!');
+    div.appendChild(textNode);
+
+    // 增加相邻文本
+    let anotherTextNode = document.createTextNode('another');
+    div.appendChild(anotherTextNode);
+
+    document.body.appendChild(div);
+
+    console.log(div.childNodes.length);  // 2
+
+    // normalize() 在一个包含两个或多个文本节点的父元素上调用normalize()
+    // 会将所有文本节点合并成一个节点
+    div.normalize();
+    console.log(div.childNodes.length);  // 1
+    console.log(div.firstChild.nodeValue)
+
+    // 分割文本节点 splitText()
+    let newNode = div.firstChild.splitText(7);
+    console.log(div.firstChild.nodeValue);  // hello
+    console.log(newNode.nodeValue);  // orld!another
+    console.log(div.childNodes.length);  // 2
+  </script>
+</body>
+</html>
