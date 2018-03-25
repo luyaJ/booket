@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prototype</title>
+</head>
+<body>
+  <script>
+    // function Person() { }
+    // Person.prototype.name = 'luya';
+    // var person1 = new Person();
+    // var person2 = new Person();
+    // alert(person1.name === person2.name);  //true
+    // alert(Person.prototype.constructor === Person);  //true
+
+
+    // 每当代码读取某个对象的某个属性时，都会执行一次搜索，搜索首先从对象实例本身开始，
+    // 如果在 实例 中找到了具有给定名字的属性，则返回该属性值；
+    // 如果没有找到，则继续搜索指针指向的原型对象，在 原型对象 中查找具有给定名字的属性
+    // 如果在原型对象中找到了这个属性，则返回该属性的值。
+    // function Person() { }
+    // Person.prototype.name = 'luya';
+    // Person.prototype.sayName = function() {
+    //   alert(this.name); 
+    // };
+    // var person1 = new Person();
+    // var person2 = new Person();
+    // person1.name = 'jiang';
+    // alert(person1.name);  // jiang  -- 来自实例
+    // alert(person2.name);  // luya   -- 来自原型 
+
+
+    // hasOwnProperty()检测一个属性是存在于实例中，还是存在于原型中
+    // 这个方法只在给定属性存在于对象实例中，才会返回true
+    function Person() { }
+    Person.prototype.name = 'luya';
+    var person1 = new Person();
+    var person2 = new Person();
+    
+    alert(person1.hasOwnProperty('name'));  // false -- 来自原型
+
+    person2.name = 'jiang';
+    alert(person2.hasOwnProperty('name'));  // true -- 来自实例
+    
+    delete person2.name;
+    alert(person2.hasOwnProperty('name'));  // false -- 来自原型
+  </script>
+</body>
+</html>
