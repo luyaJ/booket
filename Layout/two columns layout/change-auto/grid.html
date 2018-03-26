@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>grid</title>
+  <!-- 一列不定，一列自适应 -->
+  <style>
+    #parent{
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+    #left{
+      background: burlywood;
+      height: 300px;
+    }
+    #right{
+      background: salmon;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div id="left">左列不定宽</div>
+    <div id="right">右列自适应</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>absolute</title>
+  <style>
+    #parent{
+      position: relative;
+    }
+    #left{
+      background: burlywood;
+      position: absolute;
+      height: 300px;
+      top: 0;
+      left: 0;
+      right: 100px;
+    }
+    #right{
+      background: rgb(105, 226, 94);
+      position: absolute;
+      height: 300px;
+      width: 100px;
+      top: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div id="left">左列自适应</div> 
+    <div id="right">右列定宽</div>
+  </div>
+</body>
+</html>
