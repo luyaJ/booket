@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> 两列定宽,一列自适应 grid</title>
+  <style>
+    #container{
+      display: grid;
+      grid-template-columns: 100px 200px auto;
+      height: 300px;
+    }
+    #left{
+      background: aquamarine;
+    }
+    #mid{
+      background: sienna;    
+    }
+    #right{
+      background: crimson;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="left">左列定宽</div>
+    <div id="mid">中间定宽</div>
+    <div id="right">右列自适应</div>
+  </div>
+</body>
+</html>

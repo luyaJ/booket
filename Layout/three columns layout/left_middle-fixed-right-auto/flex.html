@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title> 两列定宽,一列自适应 float + marign</title>
+  <title> 两列定宽,一列自适应 flex</title>
   <style>
-    
+    #container{
+      display: flex;
+      height: 300px;
+    }
+    #left{
+      background: aquamarine;
+      width: 100px;
+    }
+    #mid{
+      background: sienna;
+      width: 200px;     
+    }
+    #right{
+      background: crimson;
+      flex: 1;  
+    }
   </style>
 </head>
 <body>
