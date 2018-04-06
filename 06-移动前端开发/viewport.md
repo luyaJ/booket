@@ -23,9 +23,9 @@ minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 > 怎么处理移动端 1px 被渲染成 2px 问题
 
 1 局部处理<br>
-    mate标签中的 viewport 属性 ，initial-scale 设置为 1 
+    mate标签中的 viewport 属性 ，initial-scale 设置为 1 ;
     rem 按照设计稿标准走，外加利用transfrome 的scale(0.5) 缩小一倍即可；
 
 2 全局处理<br>
-    mate标签中的 viewport 属性 ，initial-scale 设置为 0.5
+    mate标签中的 viewport 属性 ，initial-scale 设置为 0.5 ;
     rem 按照设计稿标准走即可
