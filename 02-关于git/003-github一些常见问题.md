@@ -33,3 +33,18 @@ $ git rm -r --cached "07-CSS/"
 $ git commit -m "xxx"
 $ git push -u origin master
 ```
+
+# git提交，每次都需要输入用户名和密码
+
+原因：使用了 https 协议的缘故，换成 ssh 协议就好了
+
+```bash
+# 查看
+$ git remote -v
+origin  https://github.com/luyaJ/IMAGE.git (fetch)
+origin  https://github.com/luyaJ/IMAGE.git (push)
+
+# 删除 https，改成 ssh 协议
+$ git remote rm origin
+$ git remote add origin git@github.com:luyaJ/booket.git
+```
