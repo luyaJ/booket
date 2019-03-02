@@ -15,6 +15,8 @@ position 的取值有：
 * fixed：
   * 生成绝对定位的元素，相对于浏览器窗口进行定位。
   * 不为元素预留空间。
+* sticky：
+  * 粘性定位，被认为是相对定位和固定定位的混合。元素在跨越特定的阈值前为相对定位，之后为固定定位。
 
 下面我们进行代码演示，初始代码如下，之后只写新增的代码：
 
@@ -50,7 +52,7 @@ position 的取值有：
 }
 ```
 
-![position_static](http://p83c9hkzc.bkt.clouddn.com/position_static.png)
+![position_static](https://s2.ax1x.com/2019/03/02/kbXCTg.png)
 
 > 2. relative 元素相对于其正常位置进行定位
 
@@ -62,31 +64,99 @@ position 的取值有：
 }
 ```
 
-![position_relative](http://p83c9hkzc.bkt.clouddn.com/position_relative.png)
+![position_relative](https://s2.ax1x.com/2019/03/02/kbOzOf.png)
 
 > 3. absolute 元素相对于非 static 定位的第一个父级元素进行定位
 
 ```css
 .box_test {
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 15px;
+  left: 15px;
 }
 ```
 
-![position_absolute](http://p83c9hkzc.bkt.clouddn.com/position_absolute.png)
+![position_absolute](https://s2.ax1x.com/2019/03/02/kbOHTe.png)
 
 > 4. fixed 元素相对于浏览器窗口进行定位
 
 ```css
 .box_test {
   position: fixed;
-  top: 35px;
-  left: 35px;
+  top: 15px;
+  left: 15px;
 }
 ```
 
-![position_fixed](http://p83c9hkzc.bkt.clouddn.com/position_fixed.png)
+> 5. sticky 元素在跨域某个阈值前为相对定位，之后为固定定位
+
+```html
+<div class="container">
+  <dl>
+    <dt>A</dt>
+    <dd>Adrew. W.K</dd>
+    <dd>ASDFF</dd>
+    <dd>ARETYY</dd>
+    <dd>AVFGHF</dd>
+  </dl>
+  <dl>
+    <dt>C</dt>
+    <dd>Chrome</dd>
+    <dd>Common</dd>
+    <dd>Converse</dd>
+    <dd>Crystal Castles</dd>
+    <dd>Cursive</dd>
+  </dl>
+  <dl>
+    <dt>E</dt>
+    <dd>Explosions In The Sky</dd>
+  </dl>
+  <dl>
+    <dt>T</dt>
+    <dd>Ted Leo & The Pharmacists</dd>
+    <dd>T-Pain</dd>
+    <dd>Thrice</dd>
+    <dd>TV On The Radio</dd>
+    <dd>Two Gallants</dd>
+  </dl>
+</div>
+```
+
+```css
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+dl {
+  margin: 0;
+  padding: 24px 0 0 0;
+}
+dt {
+  background: darkcyan;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #717D85;
+  color: #fff;
+  font: bold 18px/21px Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 2px 0 0 12px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+}
+dd {
+  font: bold 20px/45px Helvetica;
+  margin: 0;
+  padding: 0 0 0 12px;
+  white-space: nowrap;
+}
+
+dd + dd {
+  border-top: 1px solid #CCC;
+}
+```
+
+![position_sticky](https://s2.ax1x.com/2019/03/02/kbXK7F.png)
 
 资料：
 
