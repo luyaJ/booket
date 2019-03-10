@@ -302,4 +302,50 @@ var c = b.bind(a,10);
 c(1,2);
 ```
 
-**call和apply都是改变上下文中的this并立即执行这个函数，而bind方法可以让对应的函数想什么时候调用就什么时候调用，并且可以将参数在执行的时候添加。**
+**call 和 apply 都是改变上下文中的 this 并立即执行这个函数，而 bind 方法可以让对应的函数想什么时候调用就什么时候调用，并且可以将参数在执行的时候添加。**
+
+#### 箭头函数中的this指向
+
+箭头函数体内的 this 对象就是定义时所在的对象，而不是使用时所在的对象。
+
+还有一点值得注意的，this 对象的指向是可变的，但在箭头函数中它是固定的。
+
+```js
+function foo() {
+  setTimeout(() => {
+    console.log("id", this.id);
+  }, 100);
+}
+foo.call({ id: 42 });  // id: 42
+```
+
+在 《ES6标准入门》中有这样一个例子：
+
+```js
+var handler = {
+  id: "123456",
+  init: function() {
+    document.addEventListener("click", event => this.doSomething(event.type), false);
+  },
+  doSomething: function(type) {
+    console.log("Handling " + type + "for" + this.id);
+  }
+};
+```
+
+上面的 init 方法中使用了箭头函数，导致 this 指向 handler 对象。
+
+```js
+function Timer() {
+  this.seconds = 0;
+  setInterval(() => this.seconds++, 1000)
+}
+var timer = new Timer();
+setTimeout(() => console.log(timer.seconds), 3100);  // 3
+```
+
+Timer 函数内部的 setInterval 调用了 `this.seconds` 属性，通过箭头函数让 this 总是指向 Timer 的实例对象。
+
+**this 指向的固定化，并不是因为箭头函数内部有绑定 this 的机制，实际原因是箭头函数根本没有自己的 this，导致内部的 this 就是外层代码块的 this。正因为它没有 this，所以也就不能用作构造函数。**
+
+详细内容见 《es6标准入门》 P80.
