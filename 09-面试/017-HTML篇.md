@@ -65,11 +65,19 @@ HTML5 指的是 HTML、CSS 和 JavaScript 在内的一套技术组合，它希�
 
 # HTML5行内元素有哪些，块级元素有哪些，空元素有哪些?
 
-行内元素：a、img、input、label、select、span
+> 行内元素：a、img、input、label、select、span。
 
-块级元素：div、p、ol、ul、dl、form、table、h1-h6
+又称内联元素，不独占区域，大小仅仅依赖于自身内容的大小（例如文字和图片），常用于控制页面中文本样式。
 
-空元素 (没有内容的 HTML 元素被称为空元素)：`<br/>`、`<hr>`、`<input>`、`<img>`、`<link>`、`<meta>`
+特点：和相邻的元素在同一行上；设置宽高无效，水平方向 margin、padding 可设，垂直方向无效；行内元素只可以容纳其他行内元素或文本。
+
+> 块级元素：div、p、ol、ul、dl、form、table、h1-h6
+
+独占一行或多行，可以设置宽高。
+
+特点：总是另起一行；在不设宽的情况下，默认占所在容器宽度的100%；可以容纳行内元素和其他的块元素；文字类的块元素不可以放块元素。
+
+> 空元素 (没有内容的 HTML 元素被称为空元素)：`<br/>`、`<hr>`、`<input>`、`<img>`、`<link>`、`<meta>`
 
 # 请你描述一下 cookies，sessionStorage 和 localStorage 的区别?
 
