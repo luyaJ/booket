@@ -30,52 +30,20 @@ b["02"];  // undefined
 
 原来，b[2] 中的 2 会被 JavaScript 解释器通过调用 toString 隐式转换成字符串，所以 `b[2] == b['2']`。那么最上面的问题就不难解决了。
 
-# 闭包
+# Buffer
 
-题目如下：
+为了使 `Buffer` 实例的创建更可靠，`new Buffer()` 构造函数已被废弃，建议使用 `Buffer.from()`、`Buffer.alloc()`。
 
-```js
-for(var i = 0; i < 5; i++){
-  //代码，输出0到4，考闭包
-}
-```
-
-解决方法：
+### Buffer.alloc(length)
 
 ```js
-for(var i = 0; i < 5; i++){
-  (function(j) {
-    setTimeout(function() {
-      console.log(j);
-    }, 1000);
-  })(i);
-}
+var buf1 = Buffer.alloc(10);  // 长度为10的buffer，初始值为0x0
+var buf2 = Buffer.alloc(10, 1);  // 长度为10的buffer，初始值为0x1
+
+var buf3 = Buffer.allocUnsafe(10);  // 长度为10的buffer，初始值不确定
+
+var buf4 = Buffer.from([1, 2, 3]);  // 长度为3的buffer，初始值为0x01,0x02,0x03
 ```
 
-要是面试官没要求一定要用 `var`，那么我们可以使用 es6 新特性 `let`：
-
-```js
-for(let i = 0; i < 5; i++) {
-  setTimeout(function() {
-    console.log(i);
-  }, 1000);
-}
-```
-
-要是他要一秒一秒的输出呢？
-
-> 第一种
-
-```js
-for(var i = 0; i < 5; i++) {
-  (function(j) {
-    setTimeout(function() {
-      console.log(j);
-    }, 1000 * j);
-  })(i);
-}
-```
-
-> 第二种
-
-```
+* Buffer.from(array) 返回一个 Buffer，包含传入的字节数组的拷贝。
+* Buffer.from(string[, encoding]) 返回一个 `Buffer`，包含传入的字符串的拷贝。
