@@ -77,7 +77,7 @@ Array.of(7);        // [7]
 Array.of(1, 2, 4);  // [1, 2, 4]
 
 Array(7);           // [ , , , , , , ]
-Array.of(1, 2, 4);  // [1, 2, 4]
+Array(1, 2, 4);     // [1, 2, 4]
 ```
 
 这两个的区别在于处理整数参数：`Array.of(7)` 创建一个具有单个元素 7 的数组，而 `Array(7)` 创建一个长度为 7 的空数组（注意是：有7个空位的数组，而不是由7个undefined组成的数组）。
@@ -102,9 +102,11 @@ a.concat(1, [2, 3]);  // ["a", "b", "c", 1, 2, 3]
 // 合并嵌套
 var n1 = [[1]];
 var n2 = [2, [3]];
-n1.concat(n2);  // [[1], 2, [3]]
-
-n1[0].push(4);  // [[1, 4], 2, [3]]
+a1 = n1.concat(n2);
+console.log(a1);  // [[1], 2, [3]]
+a2 = n1[0].push(4);
+console.log(a2);  // 2 (返回的是length = 2)
+console.log(n1);  // [1, 4]
 ```
 
 > Array.prototype.copyWithin()
